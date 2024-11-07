@@ -10,7 +10,7 @@ public class Order {
     private Customer customer;
     private List<Product> products = new ArrayList<>();
     private double totalAmount;
-    File f = new File("\"C:\\Users\\Admin\\OneDrive\\Desktop\\Assignment\\Assignment\\Order.txt\"");
+    File f = new File("C:\\Users\\Admin\\OneDrive\\Desktop\\Assignment\\Assignment\\Order.txt");
 
     public Order(int orderId, Customer customer) {
         this.customer = customer;

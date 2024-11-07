@@ -39,6 +39,7 @@ public class App {
         int cusId;
         String cusName;
         String cusEmail;
+        int bquantity;
         List<Product> products = new ArrayList<>();
         List<Order> orders = new ArrayList<>();
 
@@ -47,9 +48,11 @@ public class App {
             System.out.println("2. In danh sach don hang");
             System.out.println("3. Thoat");
             System.out.print("Lua chon cua ban: ");
-            choice = Integer.parseInt(sc.nextLine());
+            choice = checkInputInt();
             switch (choice) {
+
                 case 1:
+                    // Them san pham
                     System.out.print("So san pham khach hang mua: ");
                     soSanPham = checkInputInt();
                     for (int i = 0; i < soSanPham; i++) {
@@ -64,9 +67,11 @@ public class App {
                         quantity = checkInputInt();
                         Product p = new Product(productId, name, price, quantity);
                         products.add(p);
+                        System.out.println("San pham da duoc them");
                         System.out.println("");
                     }
 
+                    // Tao order moi
                     System.out.println("Vui long dien thong tin khach hang");
                     System.out.print("ID khach hang: ");
                     cusId = checkInputInt();
@@ -77,16 +82,24 @@ public class App {
                     System.out.print("Nhap id don hang: ");
                     orderId = checkInputInt();
                     Customer c = new Customer(cusId, cusName, cusEmail);
+                    
+                    Order ord = s.createOrder(c);
 
-                    Order o = new Order(orderId, c);
-                    orders.add(o);
+                    // Adding products to order
+                    for (Product p : products) {
+                        System.out.println(p.getInfo());
+                        System.out.print("Nhap so luong muon mua cho san pham: ");
+                        bquantity = checkInputInt();
+                        ord.addProduct(p, bquantity); 
+                    }
+                    System.out.println("Don hang da duoc tao.");
                     break;
                 case 2:
+                    // Print all orders
                     System.out.println("Danh sach don hang:");
-                    for (Order order : orders) {
-                        System.out.println(order);
+                    for (Order o : s.getAllOrders()) {
+                        System.out.println(o);
                     }
-                    System.out.println("");
                     break;
                 default:
                     System.exit(0);

@@ -64,7 +64,7 @@ public class App {
                         quantity = checkInputInt();
                         Product p = new Product(productId, name, price, quantity);
                         products.add(p);
-                        System.out.println("\n");
+                        System.out.println("");
                     }
 
                     System.out.println("Vui long dien thong tin khach hang");
@@ -86,7 +86,7 @@ public class App {
                     for (Order order : orders) {
                         System.out.println(order);
                     }
-                    System.out.println("\n");
+                    System.out.println("");
                     break;
                 default:
                     System.exit(0);

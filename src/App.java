@@ -50,7 +50,6 @@ public class App {
             System.out.print("Lua chon cua ban: ");
             choice = checkInputInt();
             switch (choice) {
-
                 case 1:
                     // Them san pham
                     System.out.print("So san pham khach hang mua: ");
@@ -84,6 +83,10 @@ public class App {
                     Customer c = new Customer(cusId, cusName, cusEmail);
                     
                     Order ord = s.createOrder(c);
+
+                    for (Product prt : s.getProducts()) {
+                        System.out.println(prt);
+                    }
 
                     // Adding products to order
                     for (Product p : products) {

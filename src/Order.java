@@ -12,15 +12,14 @@ public class Order {
     private double totalAmount;
     File f = new File("\"C:\\Users\\Admin\\OneDrive\\Desktop\\Assignment\\Assignment\\Order.txt\"");
 
-    public Order(
-            int orderId, Customer customer) {
+    public Order(int orderId, Customer customer) {
         this.customer = customer;
         this.orderId = orderId;
     }
 
     public void addProduct(Product product, int quantity) {
         if (quantity > product.getQuantity()) {
-            System.out.println("Not enough quantity in stock.");
+            System.out.println("Khong du so luong trong kho.");
         } else {
             products.add(product);
             product.updateQuantity(quantity);
@@ -46,9 +45,9 @@ public class Order {
     }
 
     public void saveToFile() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(f, true))) { 
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(f, true))) {
             writer.write(getOrderDetails());
-            writer.write("\n---------------------------\n"); 
+            writer.write("\n---------------------------\n");
             System.out.println("Thong tin don hang da duoc luu vao file: " + f.getAbsolutePath());
         } catch (IOException e) {
             System.out.println("Co loi khi ghi thong tin: " + e.getMessage());

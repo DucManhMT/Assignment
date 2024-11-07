@@ -11,7 +11,7 @@ public class App {
                 int result = Integer.parseInt(sc.nextLine());
                 return result;
             } catch (NumberFormatException e) {
-                System.out.println("Vui long nhap lai: ");
+                System.out.print("Vui long nhap lai: ");
             }
         }
     }
@@ -19,10 +19,10 @@ public class App {
     private static double checkInputDouble() {
         while (true) {
             try {
-                double result = Integer.parseInt(sc.nextLine());
+                double result = Double.parseDouble(sc.nextLine());
                 return result;
             } catch (NumberFormatException e) {
-                System.out.println("Vui long nhap lai: ");
+                System.out.print("Vui long nhap lai: ");
             }
         }
     }
@@ -39,50 +39,59 @@ public class App {
         int cusId;
         String cusName;
         String cusEmail;
-        List<Product> products=new ArrayList<>();
-        System.out.println("1. Tao moi don hang");
-        System.out.println("2. In danh sach don hang");
-        choice = Integer.parseInt(sc.nextLine());
+        List<Product> products = new ArrayList<>();
+        List<Order> orders = new ArrayList<>();
+
         while (true) {
-                    System.out.println("So san pham khach hang mua");
-                    soSanPham=checkInputInt();
-                    for(int i=0;i<soSanPham;i++){
-                    System.out.println("Nhap id san pham");
-                    productId = checkInputInt();
-                    System.out.println("Nhap ten san pham");
-                    name = sc.nextLine();
-                    System.out.println("Nhap gia san pham");
-                    price = checkInputDouble();
-                    System.out.println("Nhap so luong san pham");
-                    quantity = checkInputInt();
-                    Product p=new Product(productId, name, price, quantity);
-                    products.add(p);
+            System.out.println("1. Tao moi don hang");
+            System.out.println("2. In danh sach don hang");
+            System.out.println("3. Thoat");
+            System.out.print("Lua chon cua ban: ");
+            choice = Integer.parseInt(sc.nextLine());
+            switch (choice) {
+                case 1:
+                    System.out.print("So san pham khach hang mua: ");
+                    soSanPham = checkInputInt();
+                    for (int i = 0; i < soSanPham; i++) {
+                        System.out.println("Vui long nhap thong tin san pham");
+                        System.out.print("Nhap id san pham: ");
+                        productId = checkInputInt();
+                        System.out.print("Nhap ten san pham: ");
+                        name = sc.nextLine();
+                        System.out.print("Nhap gia san pham: ");
+                        price = checkInputDouble();
+                        System.out.print("Nhap so luong san pham: ");
+                        quantity = checkInputInt();
+                        Product p = new Product(productId, name, price, quantity);
+                        products.add(p);
+                        System.out.println("\n");
                     }
-                    
-                    
-                    System.out.println("Dien thong tin khach hang");
-                    System.out.println("Dien thong ID khach hang");
-                    cusId=checkInputInt();
-                    System.out.println("Dien thong ten khach hang");
-                    cusName=sc.nextLine();
-                    System.out.println("Dien thong Email khach hang");
-                    cusEmail=sc.nextLine();
-                    System.out.println("Nhap id don hang");
-                    orderId=checkInputInt();
-                    Customer c=new Customer(cusId, cusName, cusEmail);
-                    for (int i = 0; i < 10; i++) {
-                        
-                    }
-                    Order o=new Order(orderId, c);
-                    
+
+                    System.out.println("Vui long dien thong tin khach hang");
+                    System.out.print("ID khach hang: ");
+                    cusId = checkInputInt();
+                    System.out.print("Ten khach hang: ");
+                    cusName = sc.nextLine();
+                    System.out.print("Email khach hang: ");
+                    cusEmail = sc.nextLine();
+                    System.out.print("Nhap id don hang: ");
+                    orderId = checkInputInt();
+                    Customer c = new Customer(cusId, cusName, cusEmail);
+
+                    Order o = new Order(orderId, c);
+                    orders.add(o);
                     break;
                 case 2:
-
+                    System.out.println("Danh sach don hang:");
+                    for (Order order : orders) {
+                        System.out.println(order);
+                    }
+                    System.out.println("\n");
                     break;
                 default:
-                    throw new AssertionError();
-         
+                    System.exit(0);
 
+            }
+        }
     }
-}
 }

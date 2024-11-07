@@ -40,6 +40,8 @@ public class Order {
             detail += "\n";
             detail += " - " + products.get(i).getInfo();
         }
+        detail += "\n";
+        detail += "Total Amount: " + calculateTotal();
         return detail;
     }
 

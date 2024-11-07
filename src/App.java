@@ -51,6 +51,11 @@ public class App {
             choice = checkInputInt();
             switch (choice) {
                 case 1:
+                if (products != null){
+                    for (Product prt : s.getProducts()) {
+                        System.out.println(prt);
+                    }
+                }
                     // Them san pham
                     System.out.print("So san pham khach hang mua: ");
                     soSanPham = checkInputInt();

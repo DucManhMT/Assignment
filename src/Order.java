@@ -40,7 +40,6 @@ public class Order {
             detail += "\n";
             detail += " - " + products.get(i).getInfo();
         }
-
         return detail;
     }
 

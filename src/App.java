@@ -81,19 +81,18 @@ public class App {
                     System.out.print("Nhap id don hang: ");
                     orderId = checkInputInt();
                     Customer c = new Customer(cusId, cusName, cusEmail);
-                    
                     Order ord = s.createOrder(c);
-
+                    //in san pham da co
                     for (Product prt : s.getProducts()) {
                         System.out.println(prt);
                     }
-
-                    // Adding products to order
+                    System.out.println("");
+                    // 
                     for (Product p : products) {
                         System.out.println(p.getInfo());
                         System.out.print("Nhap so luong muon mua cho san pham: ");
                         bquantity = checkInputInt();
-                        ord.addProduct(p, bquantity); 
+                        ord.addProduct(p, bquantity);
                     }
                     System.out.println("Don hang da duoc tao.");
                     break;
@@ -101,12 +100,11 @@ public class App {
                     // Print all orders
                     System.out.println("Danh sach don hang:");
                     for (Order o : s.getAllOrders()) {
-                        System.out.println(o);
+                        System.out.println(o.getOrderDetails());
                     }
                     break;
                 default:
                     System.exit(0);
-
             }
         }
     }
